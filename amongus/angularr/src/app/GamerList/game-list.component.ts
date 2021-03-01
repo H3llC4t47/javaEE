@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from "../Models/params";
+import {Game} from '../Models/params';
 import {Router} from '@angular/router';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-game-list',
@@ -10,11 +10,10 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 })
 export class GameListComponent implements OnInit {
 
-  title = 'Game';
+  title = 'Gamer';
 
   games: Game[] = [];
-  url = 'http://127.0.0.1:8080/GameAPI/api/games';
-
+  url = 'http://127.0.0.1:8080/SuperGamerAPI/api/gamesy';
   id = '';
   name = '';
   price = '';
@@ -25,15 +24,14 @@ export class GameListComponent implements OnInit {
     this.ngOnInit();
   }
 
-
   addGame(): void {
     const body = {
       id: this.id,
       name: this.name,
       price: this.price,
       studio: this.studio
-
     };
+
     this.http.post(this.url, body, {observe: 'response'}).subscribe(
       (data) => {
         console.log(data);
@@ -44,6 +42,7 @@ export class GameListComponent implements OnInit {
       }
     );
   }
+
   checkGame(id: number): void {
     this.router.navigateByUrl('detail/' + id);
   }
