@@ -1,0 +1,27 @@
+
+
+<h1>Your game details: </h1>
+
+<input id="Id" name="Id" type="text" [(ngModel)]="id" placeholder="id">
+<input id="Name" name="Name" type="text" [(ngModel)]="name" placeholder="Name">
+<input id="Price" name="Price" type="text" [(ngModel)]="price" placeholder="Price">
+<input id="Studio" name="Studio" type="text" [(ngModel)]="studio" placeholder="Studio">
+
+
+<button (click)="addGame()">Add</button>
+
+<table>
+  <thead>
+  <td>Id</td>
+  <td>Name</td>
+  <td>Price</td>
+  <td>Studio</td>
+  </thead>
+  <tr *ngFor="let gameDetail of games" class="gameDetail">
+    <td>{{gameDetail.id}}</td>
+    <td>{{gameDetail.name}}</td>
+    <td>{{gameDetail.price}}</td>
+    <td>{{gameDetail.studio}}</td>
+    <td><button (click)="checkGame(gameDetail.id)">Detail</button></td>
+  </tr>
+</table>
